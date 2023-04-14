@@ -16,11 +16,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
 public class GUI extends JFrame implements MouseListener {
 
     Canvas myCanvas;
-    final String fileName = "prawn.png";
+    final String fileName = "resources/game/prawn.png";
     ImageIcon image = new ImageIcon(fileName);
     int x = 0;
     int y = 0;
@@ -28,15 +27,15 @@ public class GUI extends JFrame implements MouseListener {
     //int imageY1 = imageY + 225;
     int fsx = 200;
     int fsy = 125;
-    
+
     public static void main(String[] args) {
         new GUI().setVisible(true);
     }
 
     public GUI() {
-        
+
         setTitle("Chess");
-        
+
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
                 exitForm(evt);
@@ -50,13 +49,13 @@ public class GUI extends JFrame implements MouseListener {
         //chessBoard = new Canvas();
         //panel.add(chessBoard);
         System.out.println("hello world");
-        
+
         this.getContentPane().setPreferredSize(new Dimension(1500, 800));
         //this.getContentPane().setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(1500,800));
+        panel.setPreferredSize(new Dimension(1500, 800));
         myCanvas = new Canvas();
         panel.add(myCanvas);
 
@@ -104,14 +103,14 @@ public class GUI extends JFrame implements MouseListener {
         g2.fillRect(fsx - 70, fsy + 350, 70, 70);
         g2.fillRect(fsx - 70, fsy + 490, 70, 70);
         g2.drawRect(fsx - 70, fsy, 560, 560);
-        image.paintIcon(this,g,x,y);
+        image.paintIcon(this, g, x, y);
 
     }
 
     public void mouseClicked(MouseEvent e) {
         int mouseX = e.getX();
         int mouseY = e.getY();
-        System.out.println("Clicked at " + mouseX +  ", " + mouseY);
+        System.out.println("Clicked at " + mouseX + ", " + mouseY);
     }
 
     private void exitForm(WindowEvent evt) {
@@ -120,19 +119,19 @@ public class GUI extends JFrame implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("press");
