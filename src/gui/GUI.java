@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package gui;
 
 /**
@@ -12,6 +8,7 @@ package gui;
  * game as well as showing previous moves.
  *
  */
+import game.ChessBoard;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,11 +25,7 @@ public class GUI extends JFrame implements MouseListener {
     int fsx = 200;
     int fsy = 125;
 
-    public static void main(String[] args) {
-        new GUI().setVisible(true);
-    }
-
-    public GUI() {
+    public GUI(ChessBoard chessBoard) {
 
         setTitle("Chess");
 
@@ -42,12 +35,6 @@ public class GUI extends JFrame implements MouseListener {
             }
         });
 
-        //this.getContentPane().setPreferredSize(new Dimension(400, 600));
-        //this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //JPanel panel = new JPanel();
-        //panel.setPreferredSize(new Dimension(400, 400));
-        //chessBoard = new Canvas();
-        //panel.add(chessBoard);
         System.out.println("hello world");
 
         this.getContentPane().setPreferredSize(new Dimension(1500, 800));
@@ -103,6 +90,7 @@ public class GUI extends JFrame implements MouseListener {
         g2.fillRect(fsx - 70, fsy + 350, 70, 70);
         g2.fillRect(fsx - 70, fsy + 490, 70, 70);
         g2.drawRect(fsx - 70, fsy, 560, 560);
+        g2.drawString("a",fsx - 35,fsy + 560);
         image.paintIcon(this, g, x, y);
 
     }
