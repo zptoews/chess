@@ -10,8 +10,6 @@ package game;
  */
 public class ChessBoard {
 
-    int board[][] = new int[7][7];
+    int board[][] = new int[8][8];
 
-    //Pawn pawn1;
-    //pawn1 = new Pawn;
 }

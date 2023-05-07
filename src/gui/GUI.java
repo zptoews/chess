@@ -33,15 +33,21 @@ public class GUI extends JFrame implements MouseListener {
             }
         });
 
+        Container content = getContentPane();
+        content.setLayout(new GridLayout(8, 8));
+
         System.out.println("hello world");
 
-        this.getContentPane().setPreferredSize(new Dimension(1500, 800));
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Square square = new Square(i,j);
+                square.setPreferredSize(new Dimension(70, 70));
+                square.setBackground((i + j) % 2 == 0 ? Color.WHITE : Color.BLACK);
+                content.add(square);               
+            }
+        }
 
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(1500, 800));
-        myCanvas = new Canvas();
-        panel.add(myCanvas);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         addMouseListener(this);
 
@@ -54,6 +60,7 @@ public class GUI extends JFrame implements MouseListener {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
+        /*
         g2.fillRect(fsx, fsy, 70, 70);
         g2.fillRect(fsx, fsy + 140, 70, 70);
         g2.fillRect(fsx, fsy + 280, 70, 70);
@@ -103,6 +110,7 @@ public class GUI extends JFrame implements MouseListener {
         g2.drawString("3", fsx - 105, fsy + 385);
         g2.drawString("2", fsx - 105, fsy + 455);
         g2.drawString("1", fsx - 105, fsy + 525);
+         */
         image.paintIcon(this, g, x, y);
 
     }
@@ -110,8 +118,8 @@ public class GUI extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int mouseX = e.getX();
         int mouseY = e.getY();
-        //System.out.println("Clicked at " + mouseX + ", " + mouseY);
-        
+        System.out.println("Clicked at " + mouseX + ", " + mouseY);
+        /*
         if( mouseX >= fsx - 70 && mouseX <= fsx && mouseY >= fsy && mouseY <= fsy + 560){
         System.out.println("Clicked at A");
         }
@@ -174,30 +182,27 @@ public class GUI extends JFrame implements MouseListener {
         
         if( mouseX >= fsx - 70 && mouseX <= fsx + 490 && mouseY >= fsy && mouseY <= fsy + 70){
         System.out.println("Clicked at 8");
+
         }
-        
+         */
     }
 
-    private void exitForm(WindowEvent evt) {
+    private void exitForm(WindowEvent e) {
         System.exit(0);
     }
 
-    @Override
     public void mouseReleased(MouseEvent e) {
 
     }
 
-    @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
-    @Override
     public void mouseExited(MouseEvent e) {
 
     }
 
-    @Override
     public void mousePressed(MouseEvent e) {
 
     }
