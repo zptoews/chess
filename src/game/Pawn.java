@@ -7,10 +7,6 @@ package game;
  * This class holds information about pawns
  * 
  */
-public class Pawn {
-
-    public void validPawnMoves () {
-        
-    }
+public class Pawn extends Piece {
     
 }

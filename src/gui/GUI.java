@@ -18,8 +18,8 @@ public class GUI extends JFrame implements MouseListener {
     Canvas myCanvas;
     final String fileName = "resources/game/prawn.png";
     ImageIcon image = new ImageIcon(fileName);
-    int x = 0;
-    int y = 0;
+    int ix = 0;
+    int iy = 0;
     int fsx = 200;
     int fsy = 125;
 
@@ -40,7 +40,7 @@ public class GUI extends JFrame implements MouseListener {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Square square = new Square(i,j);
+                Square square = new Square(j,i,chessBoard.getPiece(i,j));
                 square.setPreferredSize(new Dimension(70, 70));
                 square.setBackground((i + j) % 2 == 0 ? Color.WHITE : Color.BLACK);
                 content.add(square);               
@@ -111,7 +111,7 @@ public class GUI extends JFrame implements MouseListener {
         g2.drawString("2", fsx - 105, fsy + 455);
         g2.drawString("1", fsx - 105, fsy + 525);
          */
-        image.paintIcon(this, g, x, y);
+        image.paintIcon(this, g, ix, iy);
 
     }
 

@@ -10,6 +10,14 @@ package game;
  */
 public class ChessBoard {
 
-    int board[][] = new int[8][8];
+    Piece board[][] = new Piece[8][8];
 
+    public ChessBoard() {
+        board[6][1] = new Pawn();
+        board[6][2] = new Pawn();
+    }
+
+    public Piece getPiece(int file, int rank) {
+        return board[file][rank];
+    }
 }
