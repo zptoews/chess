@@ -38,11 +38,11 @@ public class GUI extends JFrame implements MouseListener {
 
         System.out.println("hello world");
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Square square = new Square(j,i,chessBoard.getPiece(i,j));
+        for (int file = 0; file < 8; file++) {
+            for (int rank = 0; rank < 8; rank++) {
+                Square square = new Square(file,rank,chessBoard.getPiece(file,rank));
                 square.setPreferredSize(new Dimension(70, 70));
-                square.setBackground((i + j) % 2 == 0 ? Color.WHITE : Color.BLACK);
+                square.setBackground((rank + file) % 2 == 0 ? Color.WHITE : Color.BLACK);
                 content.add(square);               
             }
         }
@@ -111,7 +111,7 @@ public class GUI extends JFrame implements MouseListener {
         g2.drawString("2", fsx - 105, fsy + 455);
         g2.drawString("1", fsx - 105, fsy + 525);
          */
-        image.paintIcon(this, g, ix, iy);
+       //  image.paintIcon(this, g, ix, iy);
 
     }
 
