@@ -27,29 +27,28 @@ public class GUI extends JFrame implements MouseListener {
 
         setTitle("Chess");
 
-        addWindowListener(new WindowAdapter() {
+        addWindowListener(new WindowAdapter() {// Lets the window close
             public void windowClosing(WindowEvent evt) {
                 exitForm(evt);
             }
         });
 
-        Container content = getContentPane();
-        content.setLayout(new GridLayout(8, 8));
+        Container content = getContentPane(); //Making the pane
+        content.setLayout(new GridLayout(8, 8)); //Making the pane 8 by 8
 
         System.out.println("hello world");
 
-        for (int file = 0; file < 8; file++) {
-            for (int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; file++) { //Creating the squares up to 8
+            for (int rank = 0; rank < 8; rank++) { //Creating the squares up to 8
+                //Making the squares a square from the square class
                 Square square = new Square(file,rank,chessBoard.getPiece(file,rank));
-                square.setPreferredSize(new Dimension(70, 70));
-                square.setBackground((rank + file) % 2 == 0 ? Color.WHITE : Color.BLACK);
+                square.setPreferredSize(new Dimension(70, 70));// Setting the perfeered size of the square to 70, 70
+                square.setBackground((rank + file) % 2 == 0 ? Color.WHITE : Color.BLACK);//Making the squares rotate black and white
                 content.add(square);               
             }
         }
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        addMouseListener(this);
 
         this.pack();
         this.toFront();
@@ -61,6 +60,9 @@ public class GUI extends JFrame implements MouseListener {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         /*
+        
+        Unused implamintation of squares
+        
         g2.fillRect(fsx, fsy, 70, 70);
         g2.fillRect(fsx, fsy + 140, 70, 70);
         g2.fillRect(fsx, fsy + 280, 70, 70);
@@ -115,7 +117,7 @@ public class GUI extends JFrame implements MouseListener {
 
     }
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {//Currentally unused implementation of mouse clicked location 
         int mouseX = e.getX();
         int mouseY = e.getY();
         System.out.println("Clicked at " + mouseX + ", " + mouseY);

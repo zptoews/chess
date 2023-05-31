@@ -10,6 +10,6 @@ package game;
  */
 public class Horse extends Piece {
     public Horse(){
-        pieceName = "Horse";
+        pieceName = "Horse";//Setting the pieces name
     }
 }

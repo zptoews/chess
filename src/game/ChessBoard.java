@@ -9,10 +9,12 @@ package game;
  *
  */
 public class ChessBoard {
-
+    
+    //Making the board of pieces
     Piece board[][] = new Piece[8][8];
 
     public ChessBoard() {
+        //Placing the pieces in the board
         board[6][0] = new Pawn();
         board[6][1] = new Pawn();
         board[6][2] = new Pawn();
@@ -30,8 +32,9 @@ public class ChessBoard {
         board[7][6] = new Horse();
         board[7][7] = new Rook();
     }
-
-    public Piece getPiece(int file, int rank) {
+    
+    
+    public Piece getPiece(int file, int rank) {//returning the location file and rank of a piece
         return board[file][rank];
     }
 }
