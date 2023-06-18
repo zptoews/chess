@@ -41,7 +41,7 @@ public class GUI extends JFrame implements MouseListener {
         for (int file = 0; file < 8; file++) { //Creating the squares up to 8
             for (int rank = 0; rank < 8; rank++) { //Creating the squares up to 8
                 //Making the squares a square from the square class
-                Square square = new Square(file,rank,chessBoard.getPiece(file,rank));
+                Square square = new Square(file,rank,ChessBoard.getPiece(file,rank));
                 square.setPreferredSize(new Dimension(70, 70));// Setting the perfeered size of the square to 70, 70
                 square.setBackground((rank + file) % 2 == 0 ? Color.WHITE : Color.BLACK);//Making the squares rotate black and white
                 content.add(square);               
@@ -58,9 +58,9 @@ public class GUI extends JFrame implements MouseListener {
 
     public void paint(Graphics g) {
         super.paint(g);
-        Graphics2D g2 = (Graphics2D) g;
+        repaint();
         /*
-        
+        Graphics2D g2 = (Graphics2D) g;
         Unused implamintation of squares
         
         g2.fillRect(fsx, fsy, 70, 70);

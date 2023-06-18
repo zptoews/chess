@@ -8,8 +8,18 @@ package game;
  *
  * @author zmaster
  */
-public class Rook extends Piece{
-    public Rook(){
+public class Rook extends Piece {
+
+    int rookRank = 7;
+    int rookFile = 7;
+//    ChessBoard chessBoard = new ChessBoard();
+
+    public Rook() {
         pieceName = "Rook";//Setting the pieces name
+
+    }
+        //TODO:Valid moves
+    public void rookValidMoves() {
+        //chessBoard.getPiece(rookRank, rookFile);
     }
 }
