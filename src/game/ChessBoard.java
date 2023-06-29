@@ -14,7 +14,7 @@ public class ChessBoard {
     public static Piece board[][] = new Piece[8][8];
 
     public ChessBoard() {
-        //TODO: Make black pieces and make pieces fit properly
+        //TODO: Make black pieces and make pieces fit properly in GUI
         //Placing the pieces in the board
         board[6][0] = new Pawn();
         board[6][1] = new Pawn();

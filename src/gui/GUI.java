@@ -18,10 +18,6 @@ public class GUI extends JFrame implements MouseListener {
     Canvas myCanvas;
     final String fileName = "resources/game/prawn.png";
     ImageIcon image = new ImageIcon(fileName);
-    int ix = 0;
-    int iy = 0;
-    int fsx = 200;
-    int fsy = 125;
 
     public GUI(ChessBoard chessBoard) {
 
@@ -32,6 +28,8 @@ public class GUI extends JFrame implements MouseListener {
                 exitForm(evt);
             }
         });
+        
+        setResizable(false);
 
         Container content = getContentPane(); //Making the pane
         content.setLayout(new GridLayout(8, 8)); //Making the pane 8 by 8

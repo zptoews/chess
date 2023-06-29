@@ -20,6 +20,7 @@ public class Square extends JPanel implements MouseListener {
     static Piece pieceClickedOn = null;
     static int fileClickedOn = 0;
     static int rankClickedOn = 0;
+    public static boolean validMove = true;
 
     final String WPawn = "resources/game/WPrawn.png";//imports for the images
     ImageIcon WPimage = new ImageIcon(WPawn);//imports for the images
@@ -67,20 +68,21 @@ public class Square extends JPanel implements MouseListener {
             fileClickedOn = file;
             rankClickedOn = rank;
         }
-        
+
         if (clickNumber == 2) {
             System.out.println("Second click");
             System.out.println("remembered piece is " + pieceClickedOn + "");
             clickNumber--;
             clickNumber--;
-           
+
             //change were the pieces are the chess board
             //use setPiece
             if (pieceClickedOn != null) {
-                 //TODO:if valid move is true then do move
-                ChessBoard.setPiece(file, rank, pieceClickedOn);
-                ChessBoard.setPiece(fileClickedOn, rankClickedOn, null);
-
+                //TODO:if valid move is true then do move
+                if (validMove == true) {
+                    ChessBoard.setPiece(file, rank, pieceClickedOn);
+                    ChessBoard.setPiece(fileClickedOn, rankClickedOn, null);
+                }
             }
 
         }

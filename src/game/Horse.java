@@ -4,12 +4,23 @@
  */
 package game;
 
+import static game.ChessBoard.getPiece;
+
 /**
  *
  * @author zmaster
  */
 public class Horse extends Piece {
+    int horseRank = 0;
+    int horseFile = 0;
     public Horse(){
         pieceName = "Horse";//Setting the pieces name
+    }
+    public void validMoves(){
+        getPiece(horseFile, horseRank);
+    }
+    @Override
+    public boolean validMove(){
+        return true;
     }
 }
