@@ -1,16 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package game;
 
 import static game.ChessBoard.getPiece;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author zmaster
  */
 public class Bishop extends Piece {
+
+    final String WBISHOP_IMAGE = "resources/game/WBishop.png";//imports for the images
+    ImageIcon WB_IMAGE_ICON = new ImageIcon(WBISHOP_IMAGE);//imports for the images
+
+    final String BBISHOP_IMAGE = "resources/game/BBishop.png";//imports for the images
+    ImageIcon BB_IMAGE_ICON = new ImageIcon(BBISHOP_IMAGE);//imports for the images
     
     public static final String BISHOP = "Bishop";
 
@@ -18,7 +21,16 @@ public class Bishop extends Piece {
     int bishopFile = 0;
 
     public Bishop(boolean black) {
-        super(black,BISHOP);
+        super(black, BISHOP);
+    }
+
+    @Override
+    public ImageIcon getImageIcon() {
+        if (isBlack()) {
+            return BB_IMAGE_ICON;
+        } else {
+            return WB_IMAGE_ICON;
+        }
     }
 
     public void validMoves() {

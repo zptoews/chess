@@ -9,14 +9,14 @@ package game;
  *
  */
 public class ChessBoard {
-    
+
     //Making the board of pieces
     public static Piece board[][] = new Piece[8][8];
     public static boolean BLACK = true;
     public static boolean WHITE = false;
 
     public ChessBoard() {
-        //TODO: Make black pieces and make pieces fit properly in GUI
+        //TODO 1: make white pieces fit properly in GUI
         //Placing the pieces in the board
         board[1][0] = new Pawn(BLACK);
         board[1][1] = new Pawn(BLACK);
@@ -34,7 +34,7 @@ public class ChessBoard {
         board[0][5] = new Bishop(BLACK);
         board[0][6] = new Horse(BLACK);
         board[0][7] = new Rook(BLACK);
-        
+
         board[6][0] = new Pawn(WHITE);
         board[6][1] = new Pawn(WHITE);
         board[6][2] = new Pawn(WHITE);
@@ -52,12 +52,12 @@ public class ChessBoard {
         board[7][6] = new Horse(WHITE);
         board[7][7] = new Rook(WHITE);
     }
-        
+
     public static Piece getPiece(int file, int rank) {//returning the location file and rank of a piece
         return board[file][rank];
     }
-    
-    public static void setPiece(int file, int rank, Piece piece){//seting the piece's location
+
+    public static void setPiece(int file, int rank, Piece piece) {//seting the piece's location
         board[file][rank] = piece;
     }
 }

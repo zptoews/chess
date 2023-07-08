@@ -8,16 +8,32 @@ package game;
  *
  */
 import static game.ChessBoard.getPiece;
+import javax.swing.ImageIcon;
 
 public class Pawn extends Piece {
 
+    private final String WPAWN_IMAGE = "resources/game/WPrawn.png";
+    private final ImageIcon WP_IMAGE_ICON = new ImageIcon(WPAWN_IMAGE);//imports for the images
+
+    private final String BPAWN_IMAGE = "resources/game/BPrawn.png";//imports for the images
+    private final ImageIcon BP_IMAGE_ICON = new ImageIcon(BPAWN_IMAGE);//imports for the images
+
     public static final String PAWN = "Pawn";
-    
+
     int pawnRank = 0;
     int pawnFile = 0;
 
     public Pawn(boolean black) {
         super(black, PAWN);
+    }
+
+    @Override
+    public ImageIcon getImageIcon() {
+        if (isBlack()) {
+            return BP_IMAGE_ICON;
+        } else {
+            return WP_IMAGE_ICON;
+        }
     }
 
     //TODO:Valid moves, return a boolean
@@ -29,4 +45,5 @@ public class Pawn extends Piece {
     public boolean validMove() {
         return true;
     }
+
 }
