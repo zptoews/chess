@@ -11,16 +11,22 @@ import static game.ChessBoard.getPiece;
  * @author zmaster
  */
 public class Horse extends Piece {
+    
+    public static final String HORSE = "Horse";
+
     int horseRank = 0;
     int horseFile = 0;
-    public Horse(){
-        pieceName = "Horse";//Setting the pieces name
+
+    public Horse(boolean black) {
+        super(black,HORSE);        
     }
-    public void validMoves(){
+
+    public void validMoves() {
         getPiece(horseFile, horseRank);
     }
+
     @Override
-    public boolean validMove(){
+    public boolean validMove() {
         return true;
     }
 }

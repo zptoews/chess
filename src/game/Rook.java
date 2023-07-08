@@ -11,13 +11,14 @@ import static game.ChessBoard.getPiece;
  * @author zmaster
  */
 public class Rook extends Piece {
+    
+    public static final String ROOK = "ROOK";
 
     int rookRank = 7;
     int rookFile = 7;
 
-    public Rook() {
-        pieceName = "Rook";//Setting the pieces name
-
+    public Rook(boolean black) {
+        super(black, ROOK);        
     }
 
     public void validMoves() {

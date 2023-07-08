@@ -12,16 +12,21 @@ import static game.ChessBoard.getPiece;
  */
 public class Bishop extends Piece {
     
+    public static final String BISHOP = "Bishop";
+
     int bishopRank = 0;
     int bishopFile = 0;
-    public Bishop(){
-        pieceName = "Bishop";//Setting the pieces name
+
+    public Bishop(boolean black) {
+        super(black,BISHOP);
     }
-    public void validMoves(){
+
+    public void validMoves() {
         getPiece(bishopFile, bishopRank);
     }
+
     @Override
-    public boolean validMove(){
+    public boolean validMove() {
         return true;
     }
 }

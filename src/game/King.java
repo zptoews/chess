@@ -11,16 +11,22 @@ import static game.ChessBoard.getPiece;
  * @author zmaster
  */
 public class King extends Piece {
+    
+    public static final String KING = "King";
+
     int kingRank = 0;
     int kingFile = 0;
-    public King(){
-        pieceName = "King";//Setting the pieces name
+
+    public King(boolean black) {
+        super(black,KING);       
     }
-    public void validMoves(){
+
+    public void validMoves() {
         getPiece(kingFile, kingRank);
     }
+
     @Override
-    public boolean validMove(){
+    public boolean validMove() {
         return true;
     }
 }
