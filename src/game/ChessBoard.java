@@ -24,12 +24,10 @@ public class ChessBoard {
     public static boolean blackTurn = false;
     public static int fileClickedOn = 0;
     public static int rankClickedOn = 0;
-    public static boolean validMove = true;
     public static Piece pieceClickedOn = null;
     public static int clickNumber = NO_CLICK;
 
     public ChessBoard() {
-        //TODO 1: make white pieces fit properly in GUI
         //Placing the pieces in the board
         board[1][0] = new Pawn(BLACK);
         board[1][1] = new Pawn(BLACK);
@@ -72,5 +70,18 @@ public class ChessBoard {
 
     public static void setPiece(int file, int rank, Piece piece) {//seting the piece's location
         board[file][rank] = piece;
+    }
+
+    public static boolean validMove(int fileClickedOn, int rankClickedOn, Piece firstPieceClickedOn) {
+        Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);
+
+        if (secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isBlack()) {
+            return false;
+        } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite() ) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 }

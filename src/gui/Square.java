@@ -27,7 +27,7 @@ public class Square extends JPanel implements MouseListener {
         //TODO 4: Valid turns
 
         Piece piece = ChessBoard.getPiece(file, rank);
-
+        //made the first click outside turn logic because it is the first click then move with the second click
         ChessBoard.clickNumber++;//adding to the clicks
         System.out.println("" + ChessBoard.clickNumber + "");
         if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
@@ -41,7 +41,6 @@ public class Square extends JPanel implements MouseListener {
             ChessBoard.rankClickedOn = rank;
         }
 
-        //Solution? make the first click outside turn logic because it is the first click then move with the second click
         if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
 
             if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
@@ -52,7 +51,7 @@ public class Square extends JPanel implements MouseListener {
                 //change were the pieces are the chess board
                 //use setPiece
                 //TODO:if valid move is true then do move
-                if (ChessBoard.validMove == true) {
+                if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
                     ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
                     ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
                     ChessBoard.blackTurn = false;
@@ -69,7 +68,7 @@ public class Square extends JPanel implements MouseListener {
                 //change were the pieces are the chess board
                 //use setPiece
                 //TODO:if valid move is true then do move
-                if (ChessBoard.validMove == true) {
+                if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
                     ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
                     ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
                     ChessBoard.blackTurn = true;
