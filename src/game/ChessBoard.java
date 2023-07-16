@@ -1,5 +1,7 @@
 package game;
 
+import gui.Square;
+
 /**
  *
  * @author Zachary Toews
@@ -11,9 +13,20 @@ package game;
 public class ChessBoard {
 
     //Making the board of pieces
+    public static final int NO_CLICK = 0;
+    public static final int FIRST_CLICK = 1;
+    public static final int SECOND_CLICK = 2;
+    public static final boolean BLACK = true;
+    public static final boolean WHITE = false;
+
     public static Piece board[][] = new Piece[8][8];
-    public static boolean BLACK = true;
-    public static boolean WHITE = false;
+
+    public static boolean blackTurn = false;
+    public static int fileClickedOn = 0;
+    public static int rankClickedOn = 0;
+    public static boolean validMove = true;
+    public static Piece pieceClickedOn = null;
+    public static int clickNumber = NO_CLICK;
 
     public ChessBoard() {
         //TODO 1: make white pieces fit properly in GUI

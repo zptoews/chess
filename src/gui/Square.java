@@ -12,64 +12,73 @@ import game.*;
  */
 public class Square extends JPanel implements MouseListener {
 
-    private static int NO_CLICK = 0;
-    private static int FIRST_CLICK = 1;
-    private static int SECOND_CLICK = 2;
-    public int file;//global to class file variable
-    public int rank;//global to class rank variable
-    Piece pieceInSquare = null;
-    static int clickNumber = NO_CLICK;
-    static Piece pieceClickedOn = null;
-    static int fileClickedOn = 0;
-    static int rankClickedOn = 0;
-    public static boolean validMove = true;
+    private int file;//global to class file variable
+    private int rank;//global to class rank variable
 
     public Square(int file, int rank, Piece pieceInSquare) {
         this.file = file;
         this.rank = rank;
 
-        this.pieceInSquare = pieceInSquare;
-
         addMouseListener(this);
     }
 
     public void mouseClicked(MouseEvent e) {
-        //TODO 2: Turns
         //TODO 3: Make pieces not take their same team colour
         //TODO 4: Valid turns
 
-        System.out.println(" " + file + " " + rank);//to tell the rank and file of the square clicked
-        //chessBoard.getPiece(file, rank);
-        if (ChessBoard.getPiece(file, rank) != null) {
-            System.out.println("There is piece here");
-        }
-        clickNumber++;//adding to the clicks
-        System.out.println("" + clickNumber + "");
-        if (clickNumber == FIRST_CLICK) {
+        Piece piece = ChessBoard.getPiece(file, rank);
+
+        ChessBoard.clickNumber++;//adding to the clicks
+        System.out.println("" + ChessBoard.clickNumber + "");
+        if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
             System.out.println("First click");
 
             //remeber what piece is clicked on
-            pieceClickedOn = ChessBoard.getPiece(file, rank);
+            ChessBoard.pieceClickedOn = ChessBoard.getPiece(file, rank);
 
             //tracks first move
-            fileClickedOn = file;
-            rankClickedOn = rank;
+            ChessBoard.fileClickedOn = file;
+            ChessBoard.rankClickedOn = rank;
         }
 
-        if (clickNumber == SECOND_CLICK) {
-            System.out.println("Second click");
-            System.out.println("remembered piece is " + pieceClickedOn + "");
-            clickNumber = NO_CLICK;
+        //Solution? make the first click outside turn logic because it is the first click then move with the second click
+        if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
 
-            //change were the pieces are the chess board
-            //use setPiece
-            if (pieceClickedOn != null) {
+            if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
+                System.out.println("black Second click");
+                System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
+                ChessBoard.clickNumber = ChessBoard.NO_CLICK;
+
+                //change were the pieces are the chess board
+                //use setPiece
                 //TODO:if valid move is true then do move
-                if (validMove == true) {
-                    ChessBoard.setPiece(file, rank, pieceClickedOn);
-                    ChessBoard.setPiece(fileClickedOn, rankClickedOn, null);
+                if (ChessBoard.validMove == true) {
+                    ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
+                    ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
+                    ChessBoard.blackTurn = false;
                 }
+
             }
+        } else if (ChessBoard.blackTurn == false && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isWhite()) {
+
+            if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
+                System.out.println("white Second click");
+                System.out.println("remembered piec e is  white " + ChessBoard.pieceClickedOn + "");
+                ChessBoard.clickNumber = ChessBoard.NO_CLICK;
+
+                //change were the pieces are the chess board
+                //use setPiece
+                //TODO:if valid move is true then do move
+                if (ChessBoard.validMove == true) {
+                    ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
+                    ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
+                    ChessBoard.blackTurn = true;
+                }
+
+            }
+        } else {
+            System.out.println("Not your turn");
+            ChessBoard.clickNumber = ChessBoard.NO_CLICK;
         }
     }
 
