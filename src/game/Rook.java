@@ -17,8 +17,8 @@ public class Rook extends Piece {
     
     public static final String ROOK = "Rook";
 
-    int rookRank = 7;
-    int rookFile = 7;
+//    int rookRank = 7;
+//    int rookFile = 7;
 
     public Rook(boolean black) {
         super(black, ROOK);
@@ -33,12 +33,15 @@ public class Rook extends Piece {
         }
     }
 
-    public void validMoves() {
-        getPiece(rookFile, rookRank);
-    }
+//    public void validMoves() {
+//        getPiece(rookFile, rookRank);
+//    }
 
     @Override
     public boolean validMove() {
-        return true;
+        return ChessBoard.changeInRank == 0 || ChessBoard.changeInFile == 0;
+        
+        //for check do same thign as way of printing images
+        //ask dad about override
     }
 }

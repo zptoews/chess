@@ -29,7 +29,6 @@ public class Square extends JPanel implements MouseListener {
         Piece piece = ChessBoard.getPiece(file, rank);
         //made the first click outside turn logic because it is the first click then move with the second click
         ChessBoard.clickNumber++;//adding to the clicks
-        System.out.println("" + ChessBoard.clickNumber + "");
         if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
             System.out.println("First click");
 
@@ -44,6 +43,9 @@ public class Square extends JPanel implements MouseListener {
         if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
 
             if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
+
+                //selected = getPiece();
+                //selected.move();
                 System.out.println("black Second click");
                 System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
                 ChessBoard.clickNumber = ChessBoard.NO_CLICK;

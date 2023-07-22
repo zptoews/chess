@@ -17,8 +17,8 @@ public class Horse extends Piece {
     
     public static final String HORSE = "Horse";
 
-    int horseRank = 0;
-    int horseFile = 0;
+//    int horseRank = 0;
+//    int horseFile = 0;
 
     public Horse(boolean black) {
         super(black, HORSE);
@@ -33,9 +33,9 @@ public class Horse extends Piece {
         }
     }
 
-    public void validMoves() {
-        getPiece(horseFile, horseRank);
-    }
+//    public void validMoves() {
+//        getPiece(horseFile, horseRank);
+//    }
 
     @Override
     public boolean validMove() {

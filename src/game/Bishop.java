@@ -17,8 +17,8 @@ public class Bishop extends Piece {
     
     public static final String BISHOP = "Bishop";
 
-    int bishopRank = 0;
-    int bishopFile = 0;
+//    int bishopRank = 0;
+//    int bishopFile = 0;
 
     public Bishop(boolean black) {
         super(black, BISHOP);
@@ -33,12 +33,12 @@ public class Bishop extends Piece {
         }
     }
 
-    public void validMoves() {
-        getPiece(bishopFile, bishopRank);
-    }
+//    public void validMoves() {
+//        getPiece(bishopFile, bishopRank);
+//    }
 
     @Override
     public boolean validMove() {
-        return true;
+        return Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile);
     }
 }

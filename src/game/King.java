@@ -17,8 +17,8 @@ public class King extends Piece {
     
     public static final String KING = "King";
 
-    int kingRank = 0;
-    int kingFile = 0;
+//    int kingRank = 0;
+//    int kingFile = 0;
 
     public King(boolean black) {
         super(black, KING);
@@ -33,9 +33,9 @@ public class King extends Piece {
         }
     }
 
-    public void validMoves() {
-        getPiece(kingFile, kingRank);
-    }
+//    public void validMoves() {
+//        getPiece(kingFile, kingRank);
+//    }
 
     @Override
     public boolean validMove() {

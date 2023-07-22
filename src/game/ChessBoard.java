@@ -26,6 +26,8 @@ public class ChessBoard {
     public static int rankClickedOn = 0;
     public static Piece pieceClickedOn = null;
     public static int clickNumber = NO_CLICK;
+    public static int changeInRank;
+    public static int changeInFile;
 
     public ChessBoard() {
         //Placing the pieces in the board
@@ -65,23 +67,29 @@ public class ChessBoard {
     }
 
     public static Piece getPiece(int file, int rank) {//returning the location file and rank of a piece
+        changeInRank = rank - rankClickedOn;
+        changeInFile = file - fileClickedOn;
         return board[file][rank];
     }
 
     public static void setPiece(int file, int rank, Piece piece) {//seting the piece's location
+
         board[file][rank] = piece;
     }
 
     public static boolean validMove(int fileClickedOn, int rankClickedOn, Piece firstPieceClickedOn) {
         Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);
-
         if (secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isBlack()) {
             return false;
-        } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite() ) {
+        } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite()) {
             return false;
-        } else {
+        } else if (firstPieceClickedOn.validMove()) {
             return true;
+        } else {
+            System.out.println("invalid move for " + firstPieceClickedOn);
+            return false;
         }
 
     }
+
 }

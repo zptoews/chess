@@ -20,8 +20,8 @@ public class Pawn extends Piece {
 
     public static final String PAWN = "Pawn";
 
-    int pawnRank = 0;
-    int pawnFile = 0;
+//    int pawnRank = 0;
+//    int pawnFile = 0;
 
     public Pawn(boolean black) {
         super(black, PAWN);
@@ -37,9 +37,9 @@ public class Pawn extends Piece {
     }
 
     //TODO:Valid moves, return a boolean
-    public void validMoves() {
-        getPiece(pawnFile, pawnRank);
-    }
+//    public void validMoves() {
+//        getPiece(pawnFile, pawnRank);
+//    }
 
     @Override
     public boolean validMove() {

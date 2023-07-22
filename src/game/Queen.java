@@ -17,8 +17,8 @@ public class Queen extends Piece {
     
     public static final String QUEEN = "Queen";
 
-    int queenRank = 0;
-    int queenFile = 0;
+//    int queenRank = 0;
+//    int queenFile = 0;
 
     public Queen(boolean black) {
         super(black, QUEEN);
@@ -33,12 +33,12 @@ public class Queen extends Piece {
         }
     }
 
-    public void validMoves() {
-        getPiece(queenFile, queenRank);
-    }
+//    public void validMoves() {
+//        getPiece(queenFile, queenRank);
+//    }
 
     @Override
     public boolean validMove() {
-        return true;
+        return ChessBoard.changeInRank == 0 || ChessBoard.changeInFile == 0 || ChessBoard.changeInRank == ChessBoard.changeInFile;
     }
 }
