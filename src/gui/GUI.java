@@ -36,8 +36,8 @@ public class GUI extends JFrame implements MouseListener {
 
         System.out.println("hello world");
 
-        for (int file = 0; file < 8; file++) { //Creating the squares up to 8
-            for (int rank = 0; rank < 8; rank++) { //Creating the squares up to 8
+        for (int rank = 0; rank < 8; rank++){ //Creating the squares up to 8
+             for (int file = 0; file < 8; file++) { //Creating the squares up to 8
                 //Making the squares a square from the square class
                 Square square = new Square(file,rank,ChessBoard.getPiece(file,rank));
                 square.setPreferredSize(new Dimension(70, 70));// Setting the perfeered size of the square to 70, 70

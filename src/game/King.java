@@ -16,6 +16,8 @@ public class King extends Piece {
     ImageIcon BK_IMAGE_ICON = new ImageIcon(BKING_IMAGE);//imports for the images
     
     public static final String KING = "King";
+    
+    private static final int NORMAL_KING_MOVE = 1;
 
 //    int kingRank = 0;
 //    int kingFile = 0;
@@ -39,6 +41,6 @@ public class King extends Piece {
 
     @Override
     public boolean validMove() {
-        return true;
+        return Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE || Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE && ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE; 
     }
 }

@@ -16,6 +16,8 @@ public class Horse extends Piece {
     ImageIcon BH_IMAGE_ICON = new ImageIcon(BHORSE_IMAGE);//imports for the images
     
     public static final String HORSE = "Horse";
+    
+    private static final int NORMAL_HORSE_MOVE = 1;
 
 //    int horseRank = 0;
 //    int horseFile = 0;
@@ -39,6 +41,9 @@ public class Horse extends Piece {
 
     @Override
     public boolean validMove() {
-        return true;
+        //2 bugs
+        //Horse can move 1 in cardinal directions
+        //Horse can move in extra big L e.g. from file 7 rank 1 to file 4 rank 3
+        return Math.abs(ChessBoard.changeInFile) == Math.abs(ChessBoard.changeInRank) + NORMAL_HORSE_MOVE || Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile) + NORMAL_HORSE_MOVE;
     }
 }

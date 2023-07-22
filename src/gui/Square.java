@@ -23,14 +23,11 @@ public class Square extends JPanel implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        //TODO 3: Make pieces not take their same team colour
-        //TODO 4: Valid turns
 
-        Piece piece = ChessBoard.getPiece(file, rank);
         //made the first click outside turn logic because it is the first click then move with the second click
         ChessBoard.clickNumber++;//adding to the clicks
         if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
-            System.out.println("First click");
+            System.out.println("First click with file of " + file + " and a rank of " + rank);          
 
             //remeber what piece is clicked on
             ChessBoard.pieceClickedOn = ChessBoard.getPiece(file, rank);
@@ -64,7 +61,7 @@ public class Square extends JPanel implements MouseListener {
 
             if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
                 System.out.println("white Second click");
-                System.out.println("remembered piec e is  white " + ChessBoard.pieceClickedOn + "");
+                System.out.println("remembered piece is white " + ChessBoard.pieceClickedOn + "");
                 ChessBoard.clickNumber = ChessBoard.NO_CLICK;
 
                 //change were the pieces are the chess board

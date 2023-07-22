@@ -20,9 +20,10 @@ public class Pawn extends Piece {
 
     public static final String PAWN = "Pawn";
 
+    private static final int NORMAL_PAWN_MOVE = 1;
+
 //    int pawnRank = 0;
 //    int pawnFile = 0;
-
     public Pawn(boolean black) {
         super(black, PAWN);
     }
@@ -40,10 +41,9 @@ public class Pawn extends Piece {
 //    public void validMoves() {
 //        getPiece(pawnFile, pawnRank);
 //    }
-
     @Override
     public boolean validMove() {
-        return true;
+        return Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
     }
 
 }

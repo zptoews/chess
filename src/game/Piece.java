@@ -20,10 +20,7 @@ import javax.swing.ImageIcon;
 public abstract class Piece {
 
     private String pieceName = "";//Defualt name for all squares so that they dont return null
-    private boolean black;//true for black else white
-    public int changeInRank;
-    public int changeInFile; 
-    
+    private boolean black;//true for black else white    
 
     public Piece(boolean isBlack, String pieceName) {
         this.black = isBlack;

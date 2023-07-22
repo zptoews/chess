@@ -39,7 +39,7 @@ public class Rook extends Piece {
 
     @Override
     public boolean validMove() {
-        return ChessBoard.changeInRank == 0 || ChessBoard.changeInFile == 0;
+        return ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK|| ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
         
         //for check do same thign as way of printing images
         //ask dad about override
