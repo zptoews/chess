@@ -41,6 +41,11 @@ public class King extends Piece {
 
     @Override
     public boolean validMove() {
-        return Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE || Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE && ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE; 
+        return Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && 
+                Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE || 
+                Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE && 
+                ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || 
+                Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && 
+                ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE; 
     }
 }

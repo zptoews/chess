@@ -17,7 +17,8 @@ public class Horse extends Piece {
     
     public static final String HORSE = "Horse";
     
-    private static final int NORMAL_HORSE_MOVE = 1;
+    private static final int NORMAL_HORSE_VALUE = 1;
+    private static final int NORMAL_HORSE_SECOND_VALUE = 2;
 
 //    int horseRank = 0;
 //    int horseFile = 0;
@@ -44,6 +45,9 @@ public class Horse extends Piece {
         //2 bugs
         //Horse can move 1 in cardinal directions
         //Horse can move in extra big L e.g. from file 7 rank 1 to file 4 rank 3
-        return Math.abs(ChessBoard.changeInFile) == Math.abs(ChessBoard.changeInRank) + NORMAL_HORSE_MOVE || Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile) + NORMAL_HORSE_MOVE;
+        return Math.abs(ChessBoard.changeInFile) == NORMAL_HORSE_VALUE && 
+                Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_SECOND_VALUE 
+                || Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_VALUE && 
+                Math.abs(ChessBoard.changeInFile) == NORMAL_HORSE_SECOND_VALUE;
     }
 }

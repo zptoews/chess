@@ -39,6 +39,8 @@ public class Queen extends Piece {
 
     @Override
     public boolean validMove() {
-        return ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE || Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile);
+        return ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || 
+                ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE || 
+                Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile);
     }
 }
