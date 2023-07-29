@@ -1,6 +1,4 @@
 package game;
-
-import static game.ChessBoard.getPiece;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,11 +15,8 @@ public class Queen extends Piece {
     
     public static final String QUEEN = "Queen";
 
-//    int queenRank = 0;
-//    int queenFile = 0;
-
-    public Queen(boolean black) {
-        super(black, QUEEN);
+    public Queen(boolean black, boolean firstMove) {
+        super(black, QUEEN, firstMove);
     }
 
     @Override
@@ -32,10 +27,6 @@ public class Queen extends Piece {
             return WQ_IMAGE_ICON;
         }
     }
-
-//    public void validMoves() {
-//        getPiece(queenFile, queenRank);
-//    }
 
     @Override
     public boolean validMove() {

@@ -1,6 +1,4 @@
 package game;
-
-import static game.ChessBoard.getPiece;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,11 +15,8 @@ public class Bishop extends Piece {
     
     public static final String BISHOP = "Bishop";
 
-//    int bishopRank = 0;
-//    int bishopFile = 0;
-
-    public Bishop(boolean black) {
-        super(black, BISHOP);
+    public Bishop(boolean black, boolean firstMove) {
+        super(black, BISHOP, firstMove);
     }
 
     @Override
@@ -32,10 +27,6 @@ public class Bishop extends Piece {
             return WB_IMAGE_ICON;
         }
     }
-
-//    public void validMoves() {
-//        getPiece(bishopFile, bishopRank);
-//    }
 
     @Override
     public boolean validMove() {

@@ -1,8 +1,5 @@
 package game;
-
-import static game.ChessBoard.getPiece;
 import javax.swing.ImageIcon;
-
 /**
  *
  * @author zmaster
@@ -19,11 +16,8 @@ public class King extends Piece {
     
     private static final int NORMAL_KING_MOVE = 1;
 
-//    int kingRank = 0;
-//    int kingFile = 0;
-
-    public King(boolean black) {
-        super(black, KING);
+    public King(boolean black, boolean firstMove) {
+        super(black, KING, firstMove);
     }
 
     @Override
@@ -34,10 +28,6 @@ public class King extends Piece {
             return WK_IMAGE_ICON;
         }
     }
-
-//    public void validMoves() {
-//        getPiece(kingFile, kingRank);
-//    }
 
     @Override
     public boolean validMove() {

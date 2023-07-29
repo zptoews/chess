@@ -40,16 +40,11 @@ public class Square extends JPanel implements MouseListener {
         if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
 
             if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
-
-                //selected = getPiece();
-                //selected.move();
+               
                 System.out.println("black Second click");
                 System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
                 ChessBoard.clickNumber = ChessBoard.NO_CLICK;
-
-                //change were the pieces are the chess board
-                //use setPiece
-                //TODO:if valid move is true then do move
+               
                 if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
                     ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
                     ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
@@ -63,10 +58,7 @@ public class Square extends JPanel implements MouseListener {
                 System.out.println("white Second click");
                 System.out.println("remembered piece is white " + ChessBoard.pieceClickedOn + "");
                 ChessBoard.clickNumber = ChessBoard.NO_CLICK;
-
-                //change were the pieces are the chess board
-                //use setPiece
-                //TODO:if valid move is true then do move
+              
                 if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
                     ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
                     ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);

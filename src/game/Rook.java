@@ -1,6 +1,4 @@
 package game;
-
-import static game.ChessBoard.getPiece;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,11 +15,8 @@ public class Rook extends Piece {
     
     public static final String ROOK = "Rook";
 
-//    int rookRank = 7;
-//    int rookFile = 7;
-
-    public Rook(boolean black) {
-        super(black, ROOK);
+    public Rook(boolean black, boolean firstMove) {
+        super(black, ROOK, firstMove);
     }
 
     @Override
@@ -32,17 +27,10 @@ public class Rook extends Piece {
             return WR_IMAGE_ICON;
         }
     }
-
-//    public void validMoves() {
-//        getPiece(rookFile, rookRank);
-//    }
-
+    
     @Override
     public boolean validMove() {
         return ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || 
                 ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
-        
-        //for check do same thign as way of printing images
-        //ask dad about override
     }
 }

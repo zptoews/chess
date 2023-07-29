@@ -29,43 +29,44 @@ public class ChessBoard {
     public static Piece pieceClickedOn = null;
     public static int clickNumber = NO_CLICK;
     public static int changeInFile;
-    public static int changeInRank;    
+    public static int changeInRank;  
+    public boolean firstMove = true;
 
     public ChessBoard() {
         //Placing the pieces in the board
-        board[0][1] = new Pawn(BLACK);
-        board[1][1] = new Pawn(BLACK);
-        board[2][1] = new Pawn(BLACK);
-        board[3][1] = new Pawn(BLACK);
-        board[4][1] = new Pawn(BLACK);
-        board[5][1] = new Pawn(BLACK);
-        board[6][1] = new Pawn(BLACK);
-        board[7][1] = new Pawn(BLACK);
-        board[0][0] = new Rook(BLACK);
-        board[1][0] = new Horse(BLACK);
-        board[2][0] = new Bishop(BLACK);
-        board[3][0] = new Queen(BLACK);
-        board[4][0] = new King(BLACK);
-        board[5][0] = new Bishop(BLACK);
-        board[6][0] = new Horse(BLACK);
-        board[7][0] = new Rook(BLACK);
+        board[0][1] = new Pawn(BLACK, firstMove);
+        board[1][1] = new Pawn(BLACK, firstMove);
+        board[2][1] = new Pawn(BLACK, firstMove);
+        board[3][1] = new Pawn(BLACK, firstMove);
+        board[4][1] = new Pawn(BLACK, firstMove);
+        board[5][1] = new Pawn(BLACK, firstMove);
+        board[6][1] = new Pawn(BLACK, firstMove);
+        board[7][1] = new Pawn(BLACK, firstMove);
+        board[0][0] = new Rook(BLACK, firstMove);
+        board[1][0] = new Horse(BLACK, firstMove);
+        board[2][0] = new Bishop(BLACK, firstMove);
+        board[3][0] = new Queen(BLACK, firstMove);
+        board[4][0] = new King(BLACK, firstMove);
+        board[5][0] = new Bishop(BLACK, firstMove);
+        board[6][0] = new Horse(BLACK, firstMove);
+        board[7][0] = new Rook(BLACK, firstMove);
 
-        board[0][6] = new Pawn(WHITE);
-        board[1][6] = new Pawn(WHITE);
-        board[2][6] = new Pawn(WHITE);
-        board[3][6] = new Pawn(WHITE);
-        board[4][6] = new Pawn(WHITE);
-        board[5][6] = new Pawn(WHITE);
-        board[6][6] = new Pawn(WHITE);
-        board[7][6] = new Pawn(WHITE);
-        board[0][7] = new Rook(WHITE);
-        board[1][7] = new Horse(WHITE);
-        board[2][7] = new Bishop(WHITE);
-        board[3][7] = new Queen(WHITE);
-        board[4][7] = new King(WHITE);
-        board[5][7] = new Bishop(WHITE);
-        board[6][7] = new Horse(WHITE);
-        board[7][7] = new Rook(WHITE);
+        board[0][6] = new Pawn(WHITE, firstMove);
+        board[1][6] = new Pawn(WHITE, firstMove);
+        board[2][6] = new Pawn(WHITE, firstMove);
+        board[3][6] = new Pawn(WHITE, firstMove);
+        board[4][6] = new Pawn(WHITE, firstMove);
+        board[5][6] = new Pawn(WHITE, firstMove);
+        board[6][6] = new Pawn(WHITE, firstMove);
+        board[7][6] = new Pawn(WHITE, firstMove);
+        board[0][7] = new Rook(WHITE, firstMove);
+        board[1][7] = new Horse(WHITE, firstMove);
+        board[2][7] = new Bishop(WHITE, firstMove);
+        board[3][7] = new Queen(WHITE, firstMove);
+        board[4][7] = new King(WHITE, firstMove);
+        board[5][7] = new Bishop(WHITE, firstMove);
+        board[6][7] = new Horse(WHITE, firstMove);
+        board[7][7] = new Rook(WHITE, firstMove);
     }
 
     public static Piece getPiece(int file, int rank) {//returning the location file and rank of a piece

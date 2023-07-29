@@ -1,6 +1,4 @@
 package game;
-
-import static game.ChessBoard.getPiece;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,11 +18,8 @@ public class Horse extends Piece {
     private static final int NORMAL_HORSE_VALUE = 1;
     private static final int NORMAL_HORSE_SECOND_VALUE = 2;
 
-//    int horseRank = 0;
-//    int horseFile = 0;
-
-    public Horse(boolean black) {
-        super(black, HORSE);
+    public Horse(boolean black, boolean firstMove) {
+        super(black, HORSE, firstMove);
     }
 
     @Override
@@ -36,15 +31,8 @@ public class Horse extends Piece {
         }
     }
 
-//    public void validMoves() {
-//        getPiece(horseFile, horseRank);
-//    }
-
     @Override
     public boolean validMove() {
-        //2 bugs
-        //Horse can move 1 in cardinal directions
-        //Horse can move in extra big L e.g. from file 7 rank 1 to file 4 rank 3
         return Math.abs(ChessBoard.changeInFile) == NORMAL_HORSE_VALUE && 
                 Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_SECOND_VALUE 
                 || Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_VALUE && 
