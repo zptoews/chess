@@ -34,7 +34,7 @@ public class GUI extends JFrame implements MouseListener {
         Container content = getContentPane(); //Making the pane
         content.setLayout(new GridLayout(8, 8)); //Making the pane 8 by 8
 
-        System.out.println("hello world");
+        System.out.println("Game of chess started");
 
         for (int rank = 0; rank < 8; rank++){ //Creating the squares up to 8
              for (int file = 0; file < 8; file++) { //Creating the squares up to 8
