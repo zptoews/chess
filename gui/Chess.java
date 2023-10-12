@@ -5,7 +5,7 @@ import game.ChessBoard;
 /**
  *
  * @author zmaster
- * 
+ * This class makes the game appere
  * 
  * 
  */

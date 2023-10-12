@@ -17,11 +17,12 @@ public class Horse extends Piece {
     
     private static final int NORMAL_HORSE_VALUE = 1;
     private static final int NORMAL_HORSE_SECOND_VALUE = 2;
-
+    //Aspects of the horse
     public Horse(boolean black, boolean firstMove) {
         super(black, HORSE, firstMove);
     }
 
+    //For identifing the piece for images
     @Override
     public ImageIcon getImageIcon() {
         if (isBlack()) {
@@ -33,6 +34,7 @@ public class Horse extends Piece {
 
     @Override
     public boolean validMove() {
+        //This methhot dictates what the valid move are for this piece
         return Math.abs(ChessBoard.changeInFile) == NORMAL_HORSE_VALUE && 
                 Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_SECOND_VALUE 
                 || Math.abs(ChessBoard.changeInRank) == NORMAL_HORSE_VALUE && 

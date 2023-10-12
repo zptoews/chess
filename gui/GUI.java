@@ -29,7 +29,7 @@ public class GUI extends JFrame implements MouseListener {
             }
         });
         
-        setResizable(false);
+        setResizable(false);//makes the window not resizeable
 
         Container content = getContentPane(); //Making the pane
         content.setLayout(new GridLayout(8, 8)); //Making the pane 8 by 8
@@ -39,14 +39,14 @@ public class GUI extends JFrame implements MouseListener {
         for (int rank = 0; rank < 8; rank++){ //Creating the squares up to 8
              for (int file = 0; file < 8; file++) { //Creating the squares up to 8
                 //Making the squares a square from the square class
-                Square square = new Square(file,rank,ChessBoard.getPiece(file,rank));
+                Square square = new Square(file,rank,ChessBoard.getPiece(file,rank));//creating new squares
                 square.setPreferredSize(new Dimension(70, 70));// Setting the perfeered size of the square to 70, 70
                 square.setBackground((rank + file) % 2 == 0 ? Color.WHITE : Color.BLACK);//Making the squares rotate black and white
                 content.add(square);               
             }
         }
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);//exiting the game when the window is colsed
 
         this.pack();
         this.toFront();

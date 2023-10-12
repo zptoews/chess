@@ -7,7 +7,7 @@ import gui.Square;
  * @author Zachary Toews
  *
  * This is the code that defines what the board is and how things on it can be
- * manipulated.
+ * manipulated as well as the condition that the board starts in.
  *
  */
 public class ChessBoard {
@@ -29,11 +29,16 @@ public class ChessBoard {
     public static Piece pieceClickedOn = null;
     public static int clickNumber = NO_CLICK;
     public static int changeInFile;
-    public static int changeInRank;  
+    public static int changeInRank;
+    //public static int startingFile = 0;
+    //public static int startingRank = 0;
+    public static boolean pieceInTheWay = true;
     public boolean firstMove = true;
+    public static int cFile;
+    public static int cRank;
 
     public ChessBoard() {
-        //Placing the pieces in the board
+        //Placing the black pieces in the board
         board[0][1] = new Pawn(BLACK, firstMove);
         board[1][1] = new Pawn(BLACK, firstMove);
         board[2][1] = new Pawn(BLACK, firstMove);
@@ -50,7 +55,8 @@ public class ChessBoard {
         board[5][0] = new Bishop(BLACK, firstMove);
         board[6][0] = new Horse(BLACK, firstMove);
         board[7][0] = new Rook(BLACK, firstMove);
-
+        
+        //Placing the black pieces in the board
         board[0][6] = new Pawn(WHITE, firstMove);
         board[1][6] = new Pawn(WHITE, firstMove);
         board[2][6] = new Pawn(WHITE, firstMove);
@@ -69,17 +75,51 @@ public class ChessBoard {
         board[7][7] = new Rook(WHITE, firstMove);
     }
 
-    public static Piece getPiece(int file, int rank) {//returning the location file and rank of a piece
+    public static Piece getPiece(int file, int rank) {
+        //This methood returns the location file and rank of a piece
         changeInFile = file - fileClickedOn;
-        changeInRank = rank - rankClickedOn;        
+        changeInRank = rank - rankClickedOn;
+        cFile = file;
+        cRank = rank;
         return board[file][rank];
     }
+    
+    public static Piece getPieceAtFileRank(int pieceFile, int pieceRank) {
+        return board [pieceFile][pieceRank];
+    }
+    
+    public int getFileOfPiece(Piece p){
+        //This methood gets the file of a piece
+        for(int f = 0; f < 8; f++){
+            for(int r = 0; r < 8; r++){
+                if(board[f][r] == p){
+                    return f;
+                }
+            }
+        }
+        return 0;
+    }
 
-    public static void setPiece(int file, int rank, Piece piece) {//seting the piece's location
+    public int getRankOfPiece(Piece p){
+        //This methood gets the rank of a piece
+        for(int f = 0; f < 8; f++){
+            for(int r = 0; r < 8; r++){
+                if(board[f][r] == p){
+                    return r;
+                }
+            }
+        }
+        return 0;
+    }
+
+    public static void setPiece(int file, int rank, Piece piece) {
+        //This methood set's the piece's location
         board[file][rank] = piece;
     }
 
     public static boolean validMove(int fileClickedOn, int rankClickedOn, Piece firstPieceClickedOn) {
+        //This methood checks if the move perforemd on a piece is valid, and if it isnt the it denys the move. 
+        //This also check to make sure a piece from one team takes the same team piece
         Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);
         System.out.println("Change in file is "+ ChessBoard.changeInFile);
         System.out.println("Change in rank is "+ ChessBoard.changeInRank);  
@@ -93,7 +133,6 @@ public class ChessBoard {
             System.out.println("invalid move for " + firstPieceClickedOn);
             return false;
         }
-
     }
 
 }

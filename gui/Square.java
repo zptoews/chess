@@ -22,10 +22,10 @@ public class Square extends JPanel implements MouseListener {
         addMouseListener(this);
     }
 
-    public void mouseClicked(MouseEvent e) {
-
+    public void mouseClicked(MouseEvent e) {    
         //made the first click outside turn logic because it is the first click then move with the second click
         ChessBoard.clickNumber++;//adding to the clicks
+        //This methood checks for the turn and if the move was valid to confirm it is a move that the player can make
         if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
             System.out.println("First click with file of " + file + " and a rank of " + rank);          
 
@@ -36,9 +36,7 @@ public class Square extends JPanel implements MouseListener {
             ChessBoard.fileClickedOn = file;
             ChessBoard.rankClickedOn = rank;
         }
-
         if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
-
             if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
                
                 System.out.println("black Second click");
@@ -50,7 +48,6 @@ public class Square extends JPanel implements MouseListener {
                     ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
                     ChessBoard.blackTurn = false;
                 }
-
             }
         } else if (ChessBoard.blackTurn == false && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isWhite()) {
 
@@ -76,7 +73,7 @@ public class Square extends JPanel implements MouseListener {
         super.paint(g);
 
         Piece piece = ChessBoard.getPiece(file, rank);
-
+        //This methood is for vissualy dispplaying the pieces as their propper pieces
         if (piece != null) {
             //To print out the correct images for the pieces            
             if (piece.getPieceName().equals(Pawn.PAWN) && piece.isWhite()) {
@@ -127,7 +124,7 @@ public class Square extends JPanel implements MouseListener {
             }
         }
     }
-
+    //Redundant events
     public void mouseReleased(MouseEvent e) {
 
     }

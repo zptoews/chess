@@ -3,6 +3,8 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author zmaster
+ * This class hold all the information about kings
+ * 
  */
 public class King extends Piece {
 
@@ -15,11 +17,12 @@ public class King extends Piece {
     public static final String KING = "King";
     
     private static final int NORMAL_KING_MOVE = 1;
-
+    //Aspects of the king
     public King(boolean black, boolean firstMove) {
         super(black, KING, firstMove);
     }
-
+    
+    //For identifing the piece for images
     @Override
     public ImageIcon getImageIcon() {
         if (isBlack()) {
@@ -31,6 +34,7 @@ public class King extends Piece {
 
     @Override
     public boolean validMove() {
+        //This methhot dictates what the valid move are for this piece
         return Math.abs(ChessBoard.changeInRank) == NORMAL_KING_MOVE && 
                 Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE || 
                 Math.abs(ChessBoard.changeInFile) == NORMAL_KING_MOVE && 

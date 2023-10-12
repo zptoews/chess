@@ -14,11 +14,12 @@ public class Bishop extends Piece {
     ImageIcon BB_IMAGE_ICON = new ImageIcon(BBISHOP_IMAGE);//imports for the images
     
     public static final String BISHOP = "Bishop";
-
+    //Aspects of the bishop
     public Bishop(boolean black, boolean firstMove) {
         super(black, BISHOP, firstMove);
     }
 
+    //For identifing the piece for images
     @Override
     public ImageIcon getImageIcon() {
         if (isBlack()) {
@@ -30,6 +31,7 @@ public class Bishop extends Piece {
 
     @Override
     public boolean validMove() {
+        //This methhot dictates what the valid move are for this piece
         return Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile);
     }
 }

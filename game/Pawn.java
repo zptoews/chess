@@ -19,11 +19,12 @@ public class Pawn extends Piece {
 
     private static final int NORMAL_PAWN_MOVE = 1;
     private static final int NORMAL_FIRST_PAWN_MOVE = 2;
-
+    //Aspects of the pawn
     public Pawn(boolean black, boolean firstMove) {
         super(black, PAWN, firstMove);
     }
 
+    //For identifing the piece for images
     @Override
     public ImageIcon getImageIcon() {
         if (isBlack()) {
@@ -35,6 +36,7 @@ public class Pawn extends Piece {
     
     @Override
     public boolean validMove() {
+        //This methhot dictates what the valid move are for this piece
         if (firstMove) {
             if (Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
                     && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE) {
