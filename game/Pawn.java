@@ -23,7 +23,6 @@ public class Pawn extends Piece {
     public Pawn(boolean black, boolean firstMove) {
         super(black, PAWN, firstMove);
     }
-
     //For identifing the piece for images
     @Override
     public ImageIcon getImageIcon() {
@@ -33,17 +32,38 @@ public class Pawn extends Piece {
             return WP_IMAGE_ICON;
         }
     }
-    
+
+    public boolean pawnObstructed(){
+        if(Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
+        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.pieceClickedOn.isBlack()){
+            System.out.println("----------- rank clicked on is "+ ChessBoard.rankClickedOn +"");
+            if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + 1) == null){            
+                return false;
+            } else {
+                return true;
+            }
+        } else if(Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
+        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.pieceClickedOn.isWhite()){
+            System.out.println("+++++++++++ rank clicked on is "+ ChessBoard.rankClickedOn +"");
+            if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn - 1) == null){            
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        } 
+    }
+
     @Override
     public boolean validMove() {
-        //This methhot dictates what the valid move are for this piece
+        //This method dictates what the valid move are for this piece
         if (firstMove) {
-            if (Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
-                    && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE) {
+            if (pawnObstructed() == false) {
                 firstMove = false;
                 return true;
             } else if (Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE
-                    && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE) {
+            && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE) {
                 firstMove = false;
                 return true;
             } else {
@@ -51,7 +71,7 @@ public class Pawn extends Piece {
             }
         } else {
             return Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE
-                    && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
+            && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
         }
     }
 

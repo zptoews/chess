@@ -82,7 +82,7 @@ public class Rook extends Piece {
                 }    
             }
         }else{
-            System.out.println("Not a valid rook move");
+            
         }
         if(ChessBoard.pieceInTheWay == false){            
             return ChessBoard.changeInRank == ChessBoard.NO_CHANGE_IN_RANK || 
