@@ -128,8 +128,10 @@ public class ChessBoard {
         } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite()) {
             return false;
         } else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isBlack() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank < 0) {
+            System.out.println("invalid move for black " + firstPieceClickedOn);
             return false;
         }else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isWhite() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank > 0) {
+            System.out.println("invalid move for white " + firstPieceClickedOn);
             return false;
         }else if (firstPieceClickedOn.validMove()) {
             return true;
