@@ -32,7 +32,7 @@ public class Bishop extends Piece {
     //This methhot dictates what the valid move are for this piece
     @Override
     public boolean validMove() {    
-        // Check if the bishop is moving diagonally
+        //Check if the bishop is moving diagonally
         if (Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile)) {
             int rankDirection = (ChessBoard.changeInRank > 0) ? 1 : -1;
             int fileDirection = (ChessBoard.changeInFile > 0) ? 1 : -1;
@@ -41,7 +41,7 @@ public class Bishop extends Piece {
                 int fileToCheck = ChessBoard.fileClickedOn + i * fileDirection;
                 if (ChessBoard.getPieceAtFileRank(fileToCheck, rankToCheck) != null) {
                     ChessBoard.pieceInTheWay = true;
-                    break; // A piece is in the way, stop checking
+                    break; //A piece is in the way so stop checking
                 } else {
                     ChessBoard.pieceInTheWay = false;
                 }

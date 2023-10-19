@@ -50,32 +50,32 @@ public class Queen extends Piece {
             }
         }                   
         if(ChessBoard.changeInRank > 0 && ChessBoard.changeInFile == 0){//Walking down the ranks looking for pieces           
-            for(int rRank = ChessBoard.rankClickedOn + 1; rRank != (ChessBoard.rankClickedOn + ChessBoard.changeInRank); rRank += directionRank){             
-                if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn,rRank) != null){
+            for(int qRank = ChessBoard.rankClickedOn + 1; qRank != (ChessBoard.rankClickedOn + ChessBoard.changeInRank); qRank += directionRank){             
+                if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn,qRank) != null){
                     ChessBoard.pieceInTheWay = true;
                 }else{
                     ChessBoard.pieceInTheWay = false;
                 }          
             }
         }else if(ChessBoard.changeInRank < 0 && ChessBoard.changeInFile == 0){
-            for(int rRank = ChessBoard.rankClickedOn -1; rRank != (ChessBoard.rankClickedOn + ChessBoard.changeInRank); rRank += directionRank){                
-                if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn,rRank) != null){
+            for(int qRank = ChessBoard.rankClickedOn -1; qRank != (ChessBoard.rankClickedOn + ChessBoard.changeInRank); qRank += directionRank){                
+                if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn,qRank) != null){
                     ChessBoard.pieceInTheWay = true;
                 }else{
                     ChessBoard.pieceInTheWay = false;
                 }        
             }
         }else if(ChessBoard.changeInFile > 0 && ChessBoard.changeInRank == 0){
-            for(int rFile = ChessBoard.fileClickedOn +1; rFile != (ChessBoard.fileClickedOn + ChessBoard.changeInFile); rFile += directionFile){
-                if(ChessBoard.getPieceAtFileRank(rFile,ChessBoard.rankClickedOn) != null){
+            for(int qFile = ChessBoard.fileClickedOn +1; qFile != (ChessBoard.fileClickedOn + ChessBoard.changeInFile); qFile += directionFile){
+                if(ChessBoard.getPieceAtFileRank(qFile,ChessBoard.rankClickedOn) != null){
                     ChessBoard.pieceInTheWay = true;
                 }else{                    
                     ChessBoard.pieceInTheWay = false;
                 }
             }
         }else if(ChessBoard.changeInFile < 0 && ChessBoard.changeInRank == 0){
-            for(int rFile = ChessBoard.fileClickedOn -1; rFile != (ChessBoard.fileClickedOn + ChessBoard.changeInFile); rFile += directionFile){                
-                if(ChessBoard.getPieceAtFileRank(rFile,ChessBoard.rankClickedOn) != null){                      
+            for(int qFile = ChessBoard.fileClickedOn -1; qFile != (ChessBoard.fileClickedOn + ChessBoard.changeInFile); qFile += directionFile){                
+                if(ChessBoard.getPieceAtFileRank(qFile,ChessBoard.rankClickedOn) != null){                      
                     ChessBoard.pieceInTheWay = true;
                 }else{
                     ChessBoard.pieceInTheWay = false;
@@ -92,7 +92,7 @@ public class Queen extends Piece {
                 int fileToCheck = ChessBoard.fileClickedOn + i * fileDirection;            
                 if (ChessBoard.getPieceAtFileRank(fileToCheck, rankToCheck) != null) {
                     ChessBoard.pieceInTheWay = true;
-                    break; // A piece is in the way, stop checking
+                    break; //A piece is in the way so stop checking
                 } else {
                     ChessBoard.pieceInTheWay = false;
                 }

@@ -19,6 +19,7 @@ public class Pawn extends Piece {
 
     private static final int NORMAL_PAWN_MOVE = 1;
     private static final int NORMAL_FIRST_PAWN_MOVE = 2;
+
     //Aspects of the pawn
     public Pawn(boolean black, boolean firstMove) {
         super(black, PAWN, firstMove);
@@ -34,17 +35,18 @@ public class Pawn extends Piece {
     }
 
     public boolean pawnObstructed(){
+        //checking of there is a piece infront of the black pawn
         if(Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
-        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.pieceClickedOn.isBlack()){
-            System.out.println("----------- rank clicked on is "+ ChessBoard.rankClickedOn +"");
+        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.changeInRank > 0){            
             if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + 1) == null){            
                 return false;
             } else {
                 return true;
             }
-        } else if(Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
-        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.pieceClickedOn.isWhite()){
-            System.out.println("+++++++++++ rank clicked on is "+ ChessBoard.rankClickedOn +"");
+        } 
+        //checking if there is a piece infront of the white pawn
+        else if(Math.abs(ChessBoard.changeInRank) == NORMAL_FIRST_PAWN_MOVE
+        && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.changeInRank < 0){            
             if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn - 1) == null){            
                 return false;
             } else {
@@ -58,7 +60,16 @@ public class Pawn extends Piece {
     @Override
     public boolean validMove() {
         //This method dictates what the valid move are for this piece
-        if (firstMove) {
+        int rankDirection = (ChessBoard.changeInRank > 0) ? 1 : -1;
+        int fileDirection = (ChessBoard.changeInFile > 0) ? 1 : -1;
+        /*
+        boolean positiveRank;
+        boolean positiveFile;
+
+        if(rankDirection > 0){positiveRank = true;}else{positiveRank = false;}
+        if(fileDirection > 0){positiveFile = true;}else{positiveFile = false;}
+         */
+        if (firstMove) {            
             if (pawnObstructed() == false) {
                 firstMove = false;
                 return true;
@@ -66,12 +77,20 @@ public class Pawn extends Piece {
             && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE) {
                 firstMove = false;
                 return true;
-            } else {
+            } else if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null){
+                firstMove = false;
+                return true;
+            } else{
                 return false;
             }
         } else {
-            return Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE
-            && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE;
+            if(Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE){
+                return true;
+            } else if(ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

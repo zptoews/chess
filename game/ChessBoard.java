@@ -55,7 +55,7 @@ public class ChessBoard {
         board[5][0] = new Bishop(BLACK, firstMove);
         board[6][0] = new Horse(BLACK, firstMove);
         board[7][0] = new Rook(BLACK, firstMove);
-        
+
         //Placing the black pieces in the board
         board[0][6] = new Pawn(WHITE, firstMove);
         board[1][6] = new Pawn(WHITE, firstMove);
@@ -83,11 +83,11 @@ public class ChessBoard {
         cRank = rank;
         return board[file][rank];
     }
-    
+
     public static Piece getPieceAtFileRank(int pieceFile, int pieceRank) {
         return board [pieceFile][pieceRank];
     }
-    
+
     public int getFileOfPiece(Piece p){
         //This methood gets the file of a piece
         for(int f = 0; f < 8; f++){
@@ -127,7 +127,11 @@ public class ChessBoard {
             return false;
         } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite()) {
             return false;
-        } else if (firstPieceClickedOn.validMove()) {
+        } else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isBlack() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank < 0) {
+            return false;
+        }else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isWhite() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank > 0) {
+            return false;
+        }else if (firstPieceClickedOn.validMove()) {
             return true;
         } else {
             System.out.println("invalid move for " + firstPieceClickedOn);
