@@ -72,6 +72,8 @@ public class Pawn extends Piece {
         //This method dictates what the valid move are for this piece
         int rankDirection = (ChessBoard.changeInRank > 0) ? 1 : -1;
         int fileDirection = (ChessBoard.changeInFile > 0) ? 1 : -1;
+        System.out.println("Change in rank is : "+ChessBoard.fileClickedOn+"");
+        System.out.println("File clicked on is : "+ChessBoard.fileClickedOn+"");
         if (firstMove) {
             if (pawnObstructed() == false) {
                 firstMove = false;
@@ -89,9 +91,13 @@ public class Pawn extends Piece {
             }
         } else {
             if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE 
-            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null){return true;} 
-            else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null){return true;}
-            else{return false;}
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) {
+                return true;
+            } else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

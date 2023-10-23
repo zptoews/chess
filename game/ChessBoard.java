@@ -74,13 +74,27 @@ public class ChessBoard {
         board[7][7] = new Rook(WHITE, firstMove);
     }
 
+    /*
+    public static Piece getPiece(int file, int rank) {
+    //This methood returns the location file and rank of a piece
+    changeInFile = file - fileClickedOn;
+    changeInRank = rank - rankClickedOn;
+    //cFile = file;
+    //cRank = rank;
+    return board[file][rank];
+    }
+     */
     public static Piece getPiece(int file, int rank) {
         //This methood returns the location file and rank of a piece
-        changeInFile = file - fileClickedOn;
-        changeInRank = rank - rankClickedOn;
-        //cFile = file;
-        //cRank = rank;
-        return board[file][rank];
+        //Checking if file and rank are within bounds
+        if (file >= 0 && file < 8 && rank >= 0 && rank < 8) {
+            changeInFile = file - fileClickedOn;
+            changeInRank = rank - rankClickedOn;
+            return board[file][rank];
+        } else {
+            //Handling out-of-bounds indexs or return null
+            return null;
+        }
     }
 
     public static Piece getPieceAtFileRank(int pieceFile, int pieceRank) {
