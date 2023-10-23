@@ -30,8 +30,7 @@ public class ChessBoard {
     public static int clickNumber = NO_CLICK;
     public static int changeInFile;
     public static int changeInRank;
-    //public static int startingFile = 0;
-    //public static int startingRank = 0;
+    public static boolean gameRunning = true;
     public static boolean pieceInTheWay = true;
     public boolean firstMove = true;
     public static int cFile;
@@ -79,12 +78,14 @@ public class ChessBoard {
         //This methood returns the location file and rank of a piece
         changeInFile = file - fileClickedOn;
         changeInRank = rank - rankClickedOn;
-        cFile = file;
-        cRank = rank;
+        //cFile = file;
+        //cRank = rank;
         return board[file][rank];
     }
 
     public static Piece getPieceAtFileRank(int pieceFile, int pieceRank) {
+        System.out.println("file clicked on is "+fileClickedOn+"");
+        System.out.println("rank clicked on is "+rankClickedOn+"");
         return board [pieceFile][pieceRank];
     }
 
@@ -121,19 +122,20 @@ public class ChessBoard {
         //This methood checks if the move perforemd on a piece is valid, and if it isnt the it denys the move. 
         //This also check to make sure a piece from one team takes the same team piece
         Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);
-        System.out.println("Change in file is "+ ChessBoard.changeInFile);
-        System.out.println("Change in rank is "+ ChessBoard.changeInRank);  
+        
         if (secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isBlack()) {
             return false;
         } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite()) {
             return false;
-        } else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isBlack() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank < 0) {
-            System.out.println("invalid move for black " + firstPieceClickedOn);
-            return false;
-        }else if (firstPieceClickedOn.validMove() && firstPieceClickedOn.isWhite() && firstPieceClickedOn.getPieceName().equals(Pawn.PAWN) && changeInRank > 0) {
-            System.out.println("invalid move for white " + firstPieceClickedOn);
-            return false;
-        }else if (firstPieceClickedOn.validMove()) {
+        } /*else if (firstPieceClickedOn.validMove()&& secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isWhite() 
+        && secondPieceClickedOn.getPieceName().equals(King.KING)) {
+            System.out.println("Black wins");
+            return true;
+        } else if (firstPieceClickedOn.validMove() && secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isBlack() 
+        && secondPieceClickedOn.getPieceName().equals(King.KING)) {
+            System.out.println("White wins");
+            return true;
+        }*/ else if (firstPieceClickedOn.validMove()) {
             return true;
         } else {
             System.out.println("invalid move for " + firstPieceClickedOn);
