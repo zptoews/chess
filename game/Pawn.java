@@ -89,11 +89,19 @@ public class Pawn extends Piece {
             } else {
                 return false;
             }
-        } else {
-            if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE 
-            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) {
+        } else {            
+            if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE 
+            && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.fileClickedOn == ChessBoard.NO_CHANGE_IN_FILE 
+            && ChessBoard.getPieceAtFileRank(ChessBoard.NO_CHANGE_IN_FILE, ChessBoard.rankClickedOn + rankDirection) == null) {
+                System.out.println("WORK");
                 return true;
-            } else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null) {
+            } else if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE 
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) {                
+                return true;
+            } /* else if(pawnColourCheck() && ChessBoard.fileClickedOn == ChessBoard.NO_CHANGE_IN_FILE 
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + NORMAL_PAWN_MOVE, ChessBoard.rankClickedOn + rankDirection) != null) {
+                return true;
+            }*/else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null) {
                 return true;
             } else {
                 return false;
