@@ -26,46 +26,41 @@ public class Square extends JPanel implements MouseListener {
         //made the first click outside turn logic because it is the first click then move with the second click
         ChessBoard.clickNumber++;//adding to the clicks
         //This methood checks for the turn and if the move was valid to confirm it is a move that the player can make
-        if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
-            System.out.println("First click with file of " + file + " and a rank of " + rank);          
-
-            //remeber what piece is clicked on
-            ChessBoard.pieceClickedOn = ChessBoard.getPiece(file, rank);
-
-            //tracks first move
-            ChessBoard.fileClickedOn = file;
-            ChessBoard.rankClickedOn = rank;
-        }
-        if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
-            if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
-               
-                System.out.println("black Second click");
-                System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
-                ChessBoard.clickNumber = ChessBoard.NO_CLICK;
-               
-                if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
-                    ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
-                    ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
-                    ChessBoard.blackTurn = false;
-                }
+        if(ChessBoard.gameRunning == true) {
+            if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
+                System.out.println("First click with file of " + file + " and a rank of " + rank);         
+                //remeber what piece is clicked on
+                ChessBoard.pieceClickedOn = ChessBoard.getPiece(file, rank);
+                //tracks first move
+                ChessBoard.fileClickedOn = file;
+                ChessBoard.rankClickedOn = rank;
             }
-        } else if (ChessBoard.blackTurn == false && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isWhite()) {
-
-            if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
-                System.out.println("white Second click");
-                System.out.println("remembered piece is white " + ChessBoard.pieceClickedOn + "");
-                ChessBoard.clickNumber = ChessBoard.NO_CLICK;
-              
-                if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
-                    ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
-                    ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
-                    ChessBoard.blackTurn = true;
+            if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
+                if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
+                    System.out.println("black Second click");
+                    System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
+                    ChessBoard.clickNumber = ChessBoard.NO_CLICK;
+                    if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
+                        ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
+                        ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
+                        ChessBoard.blackTurn = false;
+                    }
                 }
-
+            } else if (ChessBoard.blackTurn == false && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isWhite()) {
+                if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
+                    System.out.println("white Second click");
+                    System.out.println("remembered piece is white " + ChessBoard.pieceClickedOn + "");
+                    ChessBoard.clickNumber = ChessBoard.NO_CLICK;
+                    if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
+                        ChessBoard.setPiece(file, rank, ChessBoard.pieceClickedOn);
+                        ChessBoard.setPiece(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn, null);
+                        ChessBoard.blackTurn = true;
+                    }
+                }
+            } else {
+                System.out.println("Not your turn");
+                ChessBoard.clickNumber = ChessBoard.NO_CLICK;
             }
-        } else {
-            System.out.println("Not your turn");
-            ChessBoard.clickNumber = ChessBoard.NO_CLICK;
         }
     }
 

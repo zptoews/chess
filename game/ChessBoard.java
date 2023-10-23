@@ -121,21 +121,22 @@ public class ChessBoard {
     public static boolean validMove(int fileClickedOn, int rankClickedOn, Piece firstPieceClickedOn) {
         //This methood checks if the move perforemd on a piece is valid, and if it isnt the it denys the move. 
         //This also check to make sure a piece from one team takes the same team piece
-        Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);
-        
+        Piece secondPieceClickedOn = getPiece(fileClickedOn, rankClickedOn);        
         if (secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isBlack()) {
             return false;
         } else if (secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isWhite()) {
             return false;
-        } /*else if (firstPieceClickedOn.validMove()&& secondPieceClickedOn != null && firstPieceClickedOn.isBlack() && secondPieceClickedOn.isWhite() 
-        && secondPieceClickedOn.getPieceName().equals(King.KING)) {
+        } else if (secondPieceClickedOn != null && secondPieceClickedOn.getPieceName().equals(King.KING) &&  firstPieceClickedOn.isBlack() && secondPieceClickedOn.isWhite() 
+        &&  firstPieceClickedOn.validMove()) {
             System.out.println("Black wins");
+            gameRunning = false;
             return true;
-        } else if (firstPieceClickedOn.validMove() && secondPieceClickedOn != null && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isBlack() 
-        && secondPieceClickedOn.getPieceName().equals(King.KING)) {
+        } else if (secondPieceClickedOn != null && secondPieceClickedOn.getPieceName().equals(King.KING) && firstPieceClickedOn.isWhite() && secondPieceClickedOn.isBlack() 
+        && firstPieceClickedOn.validMove()) {
             System.out.println("White wins");
+            gameRunning = false;
             return true;
-        }*/ else if (firstPieceClickedOn.validMove()) {
+        } else if (firstPieceClickedOn.validMove()) {
             return true;
         } else {
             System.out.println("invalid move for " + firstPieceClickedOn);
