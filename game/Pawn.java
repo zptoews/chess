@@ -83,7 +83,9 @@ public class Pawn extends Piece {
             && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) {
                 firstMove = false;
                 return true;
-            } else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null ) {
+            } else if(pawnColourCheck() && fileDirection == ChessBoard.changeInFile 
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null 
+            && ChessBoard.changeInFile <= 1 && ChessBoard.changeInFile >= -1 && ChessBoard.changeInRank <= 1 && ChessBoard.changeInRank >= -1) {
                 firstMove = false;
                 return true;
             } else {
@@ -92,21 +94,18 @@ public class Pawn extends Piece {
         } else {            
             if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE 
             && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE && ChessBoard.fileClickedOn == ChessBoard.NO_CHANGE_IN_FILE 
-            && ChessBoard.getPieceAtFileRank(ChessBoard.NO_CHANGE_IN_FILE, ChessBoard.rankClickedOn + rankDirection) == null) {
-                System.out.println("WORK");
-                return true;
+            && ChessBoard.getPieceAtFileRank(ChessBoard.NO_CHANGE_IN_FILE, ChessBoard.rankClickedOn + rankDirection) != null) {
+                return false;
             } else if(pawnColourCheck() && Math.abs(ChessBoard.changeInRank) == NORMAL_PAWN_MOVE && ChessBoard.changeInFile == ChessBoard.NO_CHANGE_IN_FILE 
-            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) {                
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn, ChessBoard.rankClickedOn + rankDirection) == null) { 
                 return true;
-            } /* else if(pawnColourCheck() && ChessBoard.fileClickedOn == ChessBoard.NO_CHANGE_IN_FILE 
-            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + NORMAL_PAWN_MOVE, ChessBoard.rankClickedOn + rankDirection) != null) {
-                return true;
-            }*/else if(pawnColourCheck() && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null) {
+            } else if(pawnColourCheck() && fileDirection == ChessBoard.changeInFile 
+            && ChessBoard.getPieceAtFileRank(ChessBoard.fileClickedOn + fileDirection, ChessBoard.rankClickedOn + rankDirection) != null 
+            && ChessBoard.changeInFile <= 1 && ChessBoard.changeInFile >= -1 && ChessBoard.changeInRank <= 1 && ChessBoard.changeInRank >= -1) {                
                 return true;
             } else {
                 return false;
             }
         }
     }
-
 }
