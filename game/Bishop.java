@@ -36,9 +36,10 @@ public class Bishop extends Piece {
         if (Math.abs(ChessBoard.changeInRank) == Math.abs(ChessBoard.changeInFile)) {
             int rankDirection = (ChessBoard.changeInRank > 0) ? 1 : -1;
             int fileDirection = (ChessBoard.changeInFile > 0) ? 1 : -1;
-            for (int i = 1; i < Math.abs(ChessBoard.changeInRank); i++) {
+            for (int i = 1; i < Math.abs(ChessBoard.changeInFile); i++) {
                 int rankToCheck = ChessBoard.rankClickedOn + i * rankDirection;
                 int fileToCheck = ChessBoard.fileClickedOn + i * fileDirection;
+                System.out.println("ball");
                 if (ChessBoard.getPieceAtFileRank(fileToCheck, rankToCheck) != null) {
                     ChessBoard.pieceInTheWay = true;
                     break; // A piece is in the way, stop checking

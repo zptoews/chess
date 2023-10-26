@@ -72,8 +72,6 @@ public class Pawn extends Piece {
         //This method dictates what the valid move are for this piece
         int rankDirection = (ChessBoard.changeInRank > 0) ? 1 : -1;
         int fileDirection = (ChessBoard.changeInFile > 0) ? 1 : -1;
-        System.out.println("Change in rank is : "+ChessBoard.fileClickedOn+"");
-        System.out.println("File clicked on is : "+ChessBoard.fileClickedOn+"");
         if (firstMove) {
             if (pawnObstructed() == false) {
                 firstMove = false;

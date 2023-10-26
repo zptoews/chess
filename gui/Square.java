@@ -27,8 +27,7 @@ public class Square extends JPanel implements MouseListener {
         ChessBoard.clickNumber++;//adding to the clicks
         //This methood checks for the turn and if the move was valid to confirm it is a move that the player can make
         if(ChessBoard.gameRunning == true) {
-            if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {
-                System.out.println("First click with file of " + file + " and a rank of " + rank);         
+            if (ChessBoard.clickNumber == ChessBoard.FIRST_CLICK) {                      
                 //remeber what piece is clicked on
                 ChessBoard.pieceClickedOn = ChessBoard.getPiece(file, rank);
                 //tracks first move
@@ -37,7 +36,6 @@ public class Square extends JPanel implements MouseListener {
             }
             if (ChessBoard.blackTurn && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isBlack()) {
                 if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
-                    System.out.println("black Second click");
                     System.out.println("remembered piece is black " + ChessBoard.pieceClickedOn + "");
                     ChessBoard.clickNumber = ChessBoard.NO_CLICK;
                     if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
@@ -48,7 +46,6 @@ public class Square extends JPanel implements MouseListener {
                 }
             } else if (ChessBoard.blackTurn == false && ChessBoard.pieceClickedOn != null && ChessBoard.pieceClickedOn.isWhite()) {
                 if (ChessBoard.clickNumber == ChessBoard.SECOND_CLICK) {
-                    System.out.println("white Second click");
                     System.out.println("remembered piece is white " + ChessBoard.pieceClickedOn + "");
                     ChessBoard.clickNumber = ChessBoard.NO_CLICK;
                     if (ChessBoard.validMove(file, rank, ChessBoard.pieceClickedOn)) {
@@ -58,7 +55,7 @@ public class Square extends JPanel implements MouseListener {
                     }
                 }
             } else {
-                System.out.println("Not your turn");
+                System.out.println("Not a valid move");
                 ChessBoard.clickNumber = ChessBoard.NO_CLICK;
             }
         }

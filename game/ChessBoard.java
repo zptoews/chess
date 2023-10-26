@@ -98,8 +98,6 @@ public class ChessBoard {
     }
 
     public static Piece getPieceAtFileRank(int pieceFile, int pieceRank) {
-        System.out.println("file clicked on is "+fileClickedOn+"iuferbfjkrnwf");
-        System.out.println("rank clicked on is "+rankClickedOn+"wefjnfwekjfwekjnfwjknfwjkenjkwf");
         return board [pieceFile][pieceRank];
     }
 
